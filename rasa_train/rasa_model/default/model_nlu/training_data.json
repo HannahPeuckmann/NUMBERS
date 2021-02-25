@@ -1,0 +1,158 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "intent": "yes",
+        "text": "ja"
+      },
+      {
+        "intent": "yes",
+        "text": "das ist richtig"
+      },
+      {
+        "intent": "yes",
+        "text": "das stimmt"
+      },
+      {
+        "intent": "yes",
+        "text": "ja, richtig"
+      },
+      {
+        "intent": "yes",
+        "text": "genau"
+      },
+      {
+        "intent": "no",
+        "text": "ne"
+      },
+      {
+        "intent": "no",
+        "text": "nein"
+      },
+      {
+        "intent": "no",
+        "text": "das stimmt so nicht"
+      },
+      {
+        "intent": "no",
+        "text": "da ist ein fehler"
+      },
+      {
+        "intent": "ignore",
+        "entities": [
+          {
+            "start": 0,
+            "end": 8,
+            "value": "ok super",
+            "entity": "noise"
+          }
+        ],
+        "text": "ok super"
+      },
+      {
+        "intent": "ignore",
+        "entities": [
+          {
+            "start": 0,
+            "end": 30,
+            "value": "dann fangen wir jetzt an oder?",
+            "entity": "noise"
+          }
+        ],
+        "text": "dann fangen wir jetzt an oder?"
+      },
+      {
+        "intent": "ignore",
+        "entities": [
+          {
+            "start": 0,
+            "end": 27,
+            "value": "gut das habe ich verstanden",
+            "entity": "noise"
+          }
+        ],
+        "text": "gut das habe ich verstanden"
+      },
+      {
+        "intent": "repeat",
+        "text": "noch mal bitte"
+      },
+      {
+        "intent": "repeat",
+        "text": "wie bitte?"
+      },
+      {
+        "intent": "repeat",
+        "text": "was?"
+      },
+      {
+        "intent": "repeat",
+        "text": "was muss ich machen?"
+      },
+      {
+        "intent": "repeat",
+        "text": "kannst du das wiederholen bitte?"
+      },
+      {
+        "intent": "repeat",
+        "text": "wiederholen bitte"
+      },
+      {
+        "intent": "help",
+        "text": "hilfe"
+      },
+      {
+        "intent": "help",
+        "text": "ich brauche hilfe"
+      },
+      {
+        "intent": "transmit_number",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "45",
+            "entity": "number"
+          }
+        ],
+        "text": "45"
+      },
+      {
+        "intent": "transmit_number",
+        "entities": [
+          {
+            "start": 0,
+            "end": 1,
+            "value": "9",
+            "entity": "number"
+          }
+        ],
+        "text": "9"
+      },
+      {
+        "intent": "transmit_number",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "237",
+            "entity": "number"
+          }
+        ],
+        "text": "237"
+      }
+    ],
+    "regex_features": [
+      {
+        "name": " noise",
+        "pattern": "(?!ja|das ist richtig|das stimmt|genau|ja, richtig|nein|ne|das stimmt so nicht|da ist ein Fehler|\\d+|noch mal bitte|wie bitte\\?|was\\?|was muss ich machen\\?|kannst du das wiederholen bitte\\?|wiederholen bitte|hilfe|ich brauche hilfe)"
+      },
+      {
+        "name": " number",
+        "pattern": "\\d+"
+      }
+    ],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}
