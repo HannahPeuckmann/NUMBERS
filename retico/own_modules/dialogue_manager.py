@@ -34,6 +34,7 @@ class DM(abstract.AbstractModule):
         self.entitys = None
         logging.basicConfig(level=logging.DEBUG, filename="NUMBERS.log")
         self.user_iu_counter = 0
+        self.in_confirmation = False
 
     def _get_intent_entities(self, input_iu):
         self.intent = input_iu.act
@@ -42,9 +43,10 @@ class DM(abstract.AbstractModule):
     def process_iu(self, input_iu):
         if abstract.AbstractModule.LISTENING:
             if input_iu.eot == True and self.user_iu_counter > 0:
+                self.in_confirmation = True
                 self._confirm_handler()
                 return
-            if input_iu.mot == True and self.user_iu_counter > 0:
+            if input_iu.mot == True and self.user_iu_counter > 0 and not self.in_confirmation:
                 self._create_iu("ja?")
             self._get_intent_entities(input_iu)
             self.user_iu_counter += 1

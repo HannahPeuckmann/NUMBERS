@@ -135,7 +135,7 @@ class SpeakerModule(abstract.AbstractConsumingModule):
     def output_iu():
         return None
 
-    def __init__(self, rate=41000, sample_width=2, use_speaker="both", **kwargs):
+    def __init__(self, rate=42100, sample_width=2, use_speaker="both", **kwargs):
         super().__init__(**kwargs)
         self.rate = rate
         self.sample_width = sample_width

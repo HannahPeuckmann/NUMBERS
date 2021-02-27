@@ -64,7 +64,10 @@ class NLUModule(abstract.AbstractModule):
         if input_iu.eot == True:
             output_iu = self.create_iu()
             output_iu.eot = True
-            # self.lb_hypotheses = []
+            return output_iu
+        if input_iu.mot == True:
+            output_iu =self.create_iu()
+            output_iu.mot = True
             return output_iu
         if abstract.AbstractModule.LISTENING:
             current_text = self.get_current_text(input_iu)
