@@ -7,7 +7,6 @@
 from retico.own_modules.eot import EOTModule
 from retico.own_modules.dialogue_manager import DM
 from retico.core.audio.io import MicrophoneModule, SpeakerModule
-from retico.core.text.io import TextRecorderModule
 from retico.core.text.asr import IncrementalizeASRModule
 from retico.modules.google.asr import GoogleASRModule
 from retico.modules.google.tts import GoogleTTSModule
@@ -28,7 +27,7 @@ speaker = SpeakerModule()
 mic.subscribe(asr)
 mic.subscribe(eot)
 asr.subscribe(eot)
-eot.subscribe(inc_asr)
+eot.subscribe(nlu)
 inc_asr.subscribe(nlu)
 nlu.subscribe(dm)
 dm.subscribe(tts)

@@ -67,6 +67,7 @@ class IncrementalizeASRModule(abstract.AbstractModule):
         self.last_ius = []
         self.threshold = threshold
         logging.basicConfig( level=logging.DEBUG, filename='NUMBERS.log')
+        self.update_text = False
 
     def get_increment(self, new_text):
         """Compares the full text given by the asr with the IUs that are already
@@ -76,6 +77,7 @@ class IncrementalizeASRModule(abstract.AbstractModule):
             if new_text.startswith(iu.text):
                 new_text = new_text[len(iu.text) :]
             else:
+                self.update_text = True
                 iu.revoked = True
         self.last_ius = [iu for iu in self.last_ius if not iu.revoked]
         return new_text
@@ -89,12 +91,13 @@ class IncrementalizeASRModule(abstract.AbstractModule):
         if input_iu.stability < self.threshold and input_iu.confidence == 0.0:
             return None
         current_text = input_iu.get_text()
-        if self.last_ius:
-            current_text = self.get_increment(current_text)
+        #if self.last_ius:
+        #    current_text = self.get_increment(current_text)
         if current_text.strip() == "":
             return None
+        print(f"increment sent to nlu:{current_text}")
         output_iu = self.create_iu(input_iu)
-
+        output_iu.update = self.update_text
         # Just copy the input IU
         output_iu.set_asr_results(
             input_iu.predictions,
@@ -104,8 +107,5 @@ class IncrementalizeASRModule(abstract.AbstractModule):
             input_iu.final,
         )
         self.last_ius.append(output_iu)
-        if output_iu.final:
-            self.last_ius = []
-            output_iu.committed = True
         return output_iu
 

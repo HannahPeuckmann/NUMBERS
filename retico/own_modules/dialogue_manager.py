@@ -55,21 +55,23 @@ class DM(abstract.AbstractModule):
 
 
     def _transmit_handler(self, asr_confidence=100):
-        self.numbers = [Number(num, asr_confidence) for num in self.values]
-        logging.debug(f"numbers: {[num.value for num in self.numbers]}")
+        flatten = lambda superior_list: [number for sublist in superior_list for number in sublist]
+        self.numbers = [Number(num, asr_confidence) for num in flatten(self.values)]
 
     def _confirm_handler(self):
         if abstract.AbstractModule.LISTENING:
-            logging.debug("in dm: confirm handler triggered")
             if self.intent == "yes":
                 for num in self.values:
                     num.confirmed = True
                 self._create_iu("cool, machs gut.")
+            elif self.intent == "no":
+                self.numbers = []
+                self._error_handler()
             else:
-                values = " "
+                values = ", "
                 values = values.join([num.value for num in self.numbers])
                 print(values)
-                self._create_iu(f"Ok, die Zahlen sind: {values}. Ist das richtig?")
+                self._create_iu(f"Ok, die Zahlen sind: {values}, ist das richtig?")
                 self.user_iu_counter = 0
 
 

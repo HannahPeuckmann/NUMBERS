@@ -61,6 +61,8 @@ class SpeechRecognitionIU(TextIU):
         self.pitch_class = None
         self.eot = False
         self.mot = False
+        self.update = False
+
 
 
     def set_asr_results(self, predictions, text, stability, confidence, final):
@@ -84,3 +86,6 @@ class SpeechRecognitionIU(TextIU):
 
     def get_text(self):
         return self.text
+    
+    def __str__(self):
+        return f"iu text:{self.text}"

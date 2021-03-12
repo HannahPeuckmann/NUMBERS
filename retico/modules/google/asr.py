@@ -115,8 +115,6 @@ class GoogleASRModule(abstract.AbstractModule):
         for response in self.responses:
             p, t, s, c, f = self._extract_results(response)
             if p:
-                if abstract.AbstractModule.EOT:
-                    logging.debug(f"recognized speech: {t}")
                 output_iu = self.create_iu(self.latest_input_iu)
                 self.latest_input_iu = None
                 output_iu.set_asr_results(p, t, s, c, f)
@@ -125,8 +123,6 @@ class GoogleASRModule(abstract.AbstractModule):
                 if f:
                     output_iu.committed = True
                 self.append(output_iu)
-            else:
-                logging.debug("no speech recognized")
             
     def setup(self):
         self.client = gspeech.SpeechClient()

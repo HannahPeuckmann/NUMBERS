@@ -39,7 +39,7 @@ class GoogleTTS:
     TEMP_DIR = "/tmp"
     TEMP_NAME = "tmp_tts_%s" % random.randint(1000,10000)
 
-    def __init__(self, language_code="en-US", voice_name="en-US-Wavenet-A", speaking_rate=1.4, caching=True):
+    def __init__(self, language_code="en-US", voice_name="en-US-Wavenet-A", speaking_rate=3.0, caching=True):
         """
         Creates a Google TTS instance with the specified language_code and voice_name.
         The valid values can be looked up [here](https://cloud.google.com/text-to-speech/docs/voices).

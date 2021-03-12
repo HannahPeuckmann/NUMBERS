@@ -2,7 +2,6 @@
 
 import re
 import logging
-from collections import namedtuple
 from retico.core import abstract
 from retico.core.text.common import SpeechRecognitionIU
 from retico.core.dialogue.common import DialogueActIU
@@ -33,13 +32,11 @@ class NLUModule(abstract.AbstractModule):
         logging.basicConfig(level=logging.DEBUG, filename="NUMBERS.log")
 
     def get_current_text(self, input_iu):
-        self.lb_hypotheses.append(input_iu)
-        self.lb_hypotheses = [iu for iu in self.lb_hypotheses if not iu.revoked]
+        self.lb_hypotheses.append(input_iu.get_text())
+        print(f"lb_hypotheses:{self.lb_hypotheses}")
         txt = ""
         for iu in self.lb_hypotheses:
-            txt += iu.get_text()
-        if input_iu.committed or input_iu.eot:
-            self.lb_hypotheses = []
+            txt += iu
         return txt
 
     ## pattern matcher nach aho und corasic als transduktor maybe?
@@ -64,20 +61,27 @@ class NLUModule(abstract.AbstractModule):
         if input_iu.eot == True:
             output_iu = self.create_iu()
             output_iu.eot = True
+            print("cleared nlu")
+            self.lb_hypotheses = []
             return output_iu
         if input_iu.mot == True:
             output_iu =self.create_iu()
             output_iu.mot = True
             return output_iu
         if abstract.AbstractModule.LISTENING:
-            current_text = self.get_current_text(input_iu)
+            # if input_iu.update == True:
+            #     self.lb_hypotheses = []
+            #current_text = self.get_current_text(input_iu)
+            current_text = input_iu.get_text()
+            print(current_text)
+            #print(f"text parsed in nlu:{current_text}")
             if not current_text:
                 return None
             result = self._parse(current_text)
             if result:
-                print(f"from nlu: intent: {result['intent']}, value: {result['value']}")
+                # print(f"from nlu: intent: {result['intent']}, value: {result['value']}")
                 output_iu = self.create_iu(input_iu)
-                output_iu.set_act(result["intent"], result["value"], 100)
+                output_iu.set_act(result["intent"], result["value"], 100) # hier ist der fehler,oder...?
                 piu = output_iu.previous_iu
                 if piu:
                     if piu.act != output_iu.act or piu.concepts != output_iu.concepts:
