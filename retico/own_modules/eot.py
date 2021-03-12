@@ -31,9 +31,9 @@ class EOTModule(abstract.AbstractModule):
         self.seconds = 0
         self.iu_counter = 0
         # 1.5 sec of no asr input signals eot for now
-        self.eot_silence_thrashold = 1.9
+        self.eot_silence_thrashold = 1.8
         self.eot = False
-        self.mot_silence_thrashold = 0.8
+        self.mot_silence_thrashold = 1.0
         self.mot = True
         logging.basicConfig(level=logging.DEBUG, filename="NUMBERS.log")
 
@@ -42,12 +42,12 @@ class EOTModule(abstract.AbstractModule):
             self.seconds = 0
         if input_iu.type() == "Audio IU":
             self.seconds += input_iu.audio_length()
-            # if not self.mot and self.seconds > self.mot_silence_thrashold and self.iu_counter > 0:
-            #     print("mot detected")
-            #     self.mot = True
-            #     output_iu = self.create_iu()
-            #     output_iu.mot = True
-            #     self.append(output_iu)
+            if not self.mot and self.seconds > self.mot_silence_thrashold and self.iu_counter > 0:
+                print("mot detected")
+                self.mot = True
+                output_iu = self.create_iu()
+                output_iu.mot = True
+                self.append(output_iu)
             if not self.eot and self.seconds > self.eot_silence_thrashold and self.iu_counter > 0 and abstract.AbstractModule.LISTENING:
                 self.seconds = 0
                 print("eot detected")
@@ -56,15 +56,13 @@ class EOTModule(abstract.AbstractModule):
                 output_iu = self.create_iu()
                 output_iu.eot = True
                 self.append(output_iu)
-                return
+            return
         else:
             self.seconds = 0
             if abstract.AbstractModule.LISTENING:
                 self.iu_counter += 1
                 if self.eot == True:
                     self.eot = False
-                # if self.mot == True:
-                #     logging.debug("set self.mot to false")
-                #     self.mot = False
-                #     #print("mot is false now")
+                if self.mot == True:
+                    self.mot = False
                 self.append(input_iu)

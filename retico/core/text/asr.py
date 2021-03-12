@@ -86,8 +86,8 @@ class IncrementalizeASRModule(abstract.AbstractModule):
     def process_iu(self, input_iu):
         if input_iu.eot == True:
             return input_iu
-        if input_iu.mot == True:
-            return input_iu
+        # if input_iu.mot == True:
+        #     return input_iu
         if input_iu.stability < self.threshold and input_iu.confidence == 0.0:
             return None
         current_text = input_iu.get_text()
@@ -95,7 +95,6 @@ class IncrementalizeASRModule(abstract.AbstractModule):
         #    current_text = self.get_increment(current_text)
         if current_text.strip() == "":
             return None
-        print(f"increment sent to nlu:{current_text}")
         output_iu = self.create_iu(input_iu)
         output_iu.update = self.update_text
         # Just copy the input IU

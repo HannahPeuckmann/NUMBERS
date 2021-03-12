@@ -204,7 +204,7 @@ class AbstractModule:
     EVENT_STOP = "stop"
     ##added by me
     LISTENING = True
-    EOT = False
+    CONFIRMING = False
 
     @staticmethod
     def name():
