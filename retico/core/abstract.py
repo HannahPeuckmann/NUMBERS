@@ -205,6 +205,8 @@ class AbstractModule:
     ##added by me
     LISTENING = True
     CONFIRMING = False
+    EOT = False
+    MOT = False
 
     @staticmethod
     def name():
@@ -456,18 +458,6 @@ class AbstractModule:
         for buffer in rbs:
             buffer.remove()
 
-    ### übernommen von rr-sds abstract to be able to revoke ius
-    def eot_signal(self):
-        '''Calls process_revoke on right_buffer modules
-        '''
-        for q in self._right_buffers:
-              q.consumer.process_eot_signal()
-
-    def process_eot_signal(self):
-        """Revokes the most recent IU of specificied iu_type.
-        By default, modules don't need to do anything.
-        """
-        pass
 
     def process_iu(self, input_iu):
         """Processes the information unit given and returns a new IU that can be
