@@ -1,7 +1,6 @@
 """
 A module for handling audio related input and output stuff.
 """
-
 import logging
 import threading
 import queue
@@ -145,14 +144,11 @@ class SpeakerModule(abstract.AbstractConsumingModule):
 
         self.stream = None
         self.time = None
-        logging.basicConfig(level=logging.DEBUG, filename="NUMBERS.log")
+        logging.basicConfig(filename='numbers.log',encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
     def process_iu(self, input_iu):
-        abstract.AbstractModule.LISTENING = False
+        logging.debug("backchennel")
         self.stream.write(bytes(input_iu.raw_audio))
-        ## added by me
-        abstract.AbstractModule.LISTENING = True
-        print(f"listening is set to: {abstract.AbstractModule.LISTENING}")
         return None
 
     def setup(self):
@@ -232,7 +228,7 @@ class StreamingSpeakerModule(abstract.AbstractConsumingModule):
 
         self.audio_buffer = queue.Queue()
         self.stream = None
-
+        
     def process_iu(self, input_iu):
         self.audio_buffer.put(input_iu.raw_audio)
         return None

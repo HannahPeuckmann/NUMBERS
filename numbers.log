@@ -1,0 +1,51 @@
+2021-03-29 15:25:35,623 Checking gAPI.json for explicit credentials as part of auth process...
+2021-03-29 15:25:40,192 Making request: POST https://oauth2.googleapis.com/token
+2021-03-29 15:25:40,207 Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-03-29 15:25:40,409 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-03-29 15:25:41,210 backchennel
+2021-03-29 15:25:48,174 asr iu
+2021-03-29 15:25:48,680 mot send
+2021-03-29 15:25:48,722 backchennel
+2021-03-29 15:25:52,620 asr iu
+2021-03-29 15:25:53,126 mot send
+2021-03-29 15:25:53,169 backchennel
+2021-03-29 15:25:56,206 asr iu
+2021-03-29 15:25:56,712 mot send
+2021-03-29 15:25:56,766 backchennel
+2021-03-29 15:25:59,516 asr iu
+2021-03-29 15:26:00,023 mot send
+2021-03-29 15:26:00,111 backchennel
+2021-03-29 15:27:59,927 Checking gAPI.json for explicit credentials as part of auth process...
+2021-03-29 15:28:04,072 Making request: POST https://oauth2.googleapis.com/token
+2021-03-29 15:28:04,206 Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-03-29 15:28:04,390 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-03-29 15:28:05,022 backchennel
+2021-03-29 15:28:10,414 asr iu
+2021-03-29 15:28:10,936 mot send
+2021-03-29 15:28:10,984 backchennel
+2021-03-29 15:28:13,815 asr iu
+2021-03-29 15:28:14,321 mot send
+2021-03-29 15:28:14,401 backchennel
+2021-03-29 15:28:22,153 asr iu
+2021-03-29 15:28:22,674 mot send
+2021-03-29 15:28:22,723 backchennel
+2021-03-29 15:28:25,308 asr iu
+2021-03-29 15:28:25,824 mot send
+2021-03-29 15:28:25,888 backchennel
+2021-03-29 15:28:28,647 asr iu
+2021-03-29 15:28:29,153 mot send
+2021-03-29 15:28:29,214 backchennel
+2021-03-29 15:29:39,296 Checking gAPI.json for explicit credentials as part of auth process...
+2021-03-29 15:29:43,787 Making request: POST https://oauth2.googleapis.com/token
+2021-03-29 15:29:43,909 Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-03-29 15:29:44,094 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-03-29 15:29:44,810 backchennel
+2021-03-29 15:29:50,017 asr iu
+2021-03-29 15:29:50,524 mot send
+2021-03-29 15:29:50,575 backchennel
+2021-03-29 15:29:53,312 asr iu
+2021-03-29 15:29:53,818 mot send
+2021-03-29 15:29:53,846 backchennel
+2021-03-29 15:29:56,502 asr iu
+2021-03-29 15:29:57,009 mot send
+2021-03-29 15:29:57,081 backchennel

@@ -1,6 +1,6 @@
 """A module for Natural Language Understanding provided by rasa_nlu"""
 
-import logging
+
 from retico.core import abstract
 from retico.core.text.common import SpeechRecognitionIU
 from retico.core.dialogue.common import DialogueActIU
@@ -49,7 +49,6 @@ class RasaNLUModule(abstract.AbstractModule):
         self.lb_hypotheses = []
         self.cache = None
         self.started_prediction = False
-        logging.basicConfig( level=logging.DEBUG, filename='NUMBERS.log')
 
     def get_current_text(self, input_iu):
         if not self.incremental:

@@ -2,17 +2,14 @@
 A Module that offers different types of real time speech recognition.
 """
 
-import logging
+
 import queue
 import threading
 from retico.core import abstract
 from retico.core.text.common import SpeechRecognitionIU
 from retico.core.audio.common import AudioIU
-from google.cloud import speech as gspeech
-from google.cloud.speech import enums
-from google.cloud.speech import types
+from google.cloud import speech_v1
 
-logging.basicConfig(filename='numbers.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 class GoogleASRModule(abstract.AbstractModule):
     """A Module that recognizes speech by utilizing the Google Speech API."""
@@ -39,6 +36,8 @@ class GoogleASRModule(abstract.AbstractModule):
 
         self.latest_input_iu = None
 
+
+
     @staticmethod
     def name():
         return "Google ASR Module"
@@ -54,6 +53,7 @@ class GoogleASRModule(abstract.AbstractModule):
     @staticmethod
     def output_iu():
         return SpeechRecognitionIU
+
 
     def process_iu(self, input_iu):
         self.audio_buffer.put(input_iu.raw_audio)
@@ -93,6 +93,7 @@ class GoogleASRModule(abstract.AbstractModule):
             # data, and stop iteration if the chunk is None, indicating the
             # end of the audio stream.
             chunk = self.audio_buffer.get()
+            print(chunk)
             if chunk is None:
                 return
             data = [chunk]
@@ -106,7 +107,6 @@ class GoogleASRModule(abstract.AbstractModule):
                     data.append(chunk)
                 except queue.Empty:
                     break
-
             yield b"".join(data)
 
     def _produce_predictions_loop(self):
@@ -116,29 +116,30 @@ class GoogleASRModule(abstract.AbstractModule):
                 output_iu = self.create_iu(self.latest_input_iu)
                 self.latest_input_iu = None
                 output_iu.set_asr_results(p, t, s, c, f)
+                if self.latest_input_iu:
+                    output_iu.pitch_class = self.latest_input_iu.pitch_class
                 if f:
                     output_iu.committed = True
-                    logging.debug("asr iu")
                     self.append(output_iu)
-
+            
     def setup(self):
-        self.client = gspeech.SpeechClient()
-        config = types.RecognitionConfig(
-            encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-            sample_rate_hertz=self.rate,
-            language_code=self.language,
-        )
-        self.streaming_config = types.StreamingRecognitionConfig(
-            config=config, interim_results=True
-        )
+        self.client = speech_v1.SpeechClient()
+        self.config = speech_v1.StreamingRecognitionConfig(
+                    config=speech_v1.RecognitionConfig(
+                        encoding=speech_v1.RecognitionConfig.AudioEncoding.LINEAR16,
+                        language_code='de-DE',
+                        sample_rate_hertz=44100,
+                    ),
+                    interim_results=True
+                )
+
+
 
     def prepare_run(self):
-        requests = (
-            types.StreamingRecognizeRequest(audio_content=content)
-            for content in self._generator()
-        )
+        requests = [speech_v1.StreamingRecognizeRequest(audio_content=content)
+                  for content in self._generator()]
         self.responses = self.client.streaming_recognize(
-            self.streaming_config, requests
+            self.config, requests
         )
         t = threading.Thread(target=self._produce_predictions_loop)
         t.start()

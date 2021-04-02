@@ -1,6 +1,5 @@
 #pitch_test.py
 
-import logging
 import crepe
 from scipy.io.wavfile import read, write
 import amfm_decompy.basic_tools as basic
@@ -70,7 +69,4 @@ def fft_freq():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(filename='NUMBERS.log',
-                    level=logging.DEBUG,
-                    format='%(asctime)s %(levelname)s: %(message)s')
     fft_freq()

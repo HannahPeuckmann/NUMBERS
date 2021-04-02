@@ -202,11 +202,6 @@ class AbstractModule:
     EVENT_SUBSCRIBE = "subscribe"
     EVENT_START = "start"
     EVENT_STOP = "stop"
-    ##added by me
-    LISTENING = True
-    CONFIRMING = False
-    EOT = False
-    MOT = False
 
     @staticmethod
     def name():

@@ -3,7 +3,6 @@ A module that helps transforming text to be used for synthesis.
 """
 
 from retico.core import abstract, text
-import logging
 
 class TextDispatcherModule(abstract.AbstractModule):
     """
@@ -66,7 +65,6 @@ class IncrementalizeASRModule(abstract.AbstractModule):
         super().__init__(**kwargs)
         self.last_ius = []
         self.threshold = threshold
-        logging.basicConfig( level=logging.DEBUG, filename='NUMBERS.log')
         self.update_text = False
 
     def get_increment(self, new_text):
