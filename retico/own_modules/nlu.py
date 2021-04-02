@@ -54,23 +54,13 @@ class NLUModule(abstract.AbstractModule):
         return intent_value
 
     def process_iu(self, input_iu):
-        if input_iu.eot == True:
-            output_iu = self.create_iu()
-            output_iu.eot = True
-            self.lb_hypotheses = []
-            return output_iu
-        if input_iu.mot == True:
-            output_iu =self.create_iu()
-            output_iu.mot = True
-            return output_iu
-
         current_text = input_iu.get_text()
         if not current_text:
             return None
         result = self._parse(current_text)
         if result:
             output_iu = self.create_iu(input_iu)
-            output_iu.set_act(result["intent"], result["value"], 100) 
+            output_iu.set_act(result["intent"], result["value"], 100)
             print(output_iu.act)
             piu = output_iu.previous_iu
             if piu:

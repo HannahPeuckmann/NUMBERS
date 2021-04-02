@@ -3,8 +3,9 @@
 import logging
 
 from retico.core import abstract
-from retico.core.text.common import GeneratedTextIU
+from retico.core.text.common import GeneratedTextIU, SpeechRecognitionIU
 from retico.core.dialogue.common import DialogueActIU
+
 
 #### ask for confirmation if asr_confidence is low in the next episode of detected silence
 
@@ -66,7 +67,6 @@ class DM(abstract.AbstractModule):
     def _transmit_handler(self, asr_confidence=100):
         flatten = lambda superior_list: [number for sublist in superior_list for number in sublist]
         self.numbers.extend(flatten(self.values))
-        print(self.numbers)
 
     def _confirm_handler(self):
         if DM.CONFIRMING == False:

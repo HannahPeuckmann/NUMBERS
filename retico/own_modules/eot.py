@@ -4,7 +4,7 @@ import sched, time
 from retico.core import abstract
 from retico.core.audio.common import AudioIU
 from retico.core.text.common import SpeechRecognitionIU
-
+from retico.core.dialogue.common import DialogueActIU
 
 class EOTModule(abstract.AbstractModule):
 
@@ -24,11 +24,11 @@ class EOTModule(abstract.AbstractModule):
 
     @staticmethod
     def input_ius():
-        return [SpeechRecognitionIU, AudioIU]
+        return [SpeechRecognitionIU]
 
     @staticmethod
     def output_iu():
-        return SpeechRecognitionIU
+        return DialogueActIU
 
     def __init__(self, eot_threshold=8.0, **kwargs):
         super().__init__(**kwargs)

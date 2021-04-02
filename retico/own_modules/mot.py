@@ -4,6 +4,7 @@ import threading
 import sched, time
 from retico.core import abstract
 from retico.core.text.common import SpeechRecognitionIU
+from retico.core.dialogue.common import DialogueActIU
 
 logging.basicConfig(filename='numbers.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
@@ -28,7 +29,7 @@ class MOTModule(abstract.AbstractModule):
 
     @staticmethod
     def output_iu():
-        return SpeechRecognitionIU
+        return DialogueActIU
 
     def __init__(self, mot_threshold=0.3, **kwargs):
         super().__init__(**kwargs)
@@ -40,7 +41,6 @@ class MOTModule(abstract.AbstractModule):
 
     def process_iu(self, input_iu):
         self.remove_silence_detection_event()
-        self.append(input_iu)
         MOTModule.should_send_silence = True
 
     def remove_silence_detection_event(self):
