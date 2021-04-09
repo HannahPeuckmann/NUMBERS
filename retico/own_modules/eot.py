@@ -30,7 +30,7 @@ class EOTModule(abstract.AbstractModule):
     def output_iu():
         return DialogueActIU
 
-    def __init__(self, eot_threshold=8.0, **kwargs):
+    def __init__(self, eot_threshold=10, **kwargs):
         super().__init__(**kwargs)
         self.eot = False
         self.scheduler = sched.scheduler(time.time, time.sleep)
@@ -43,16 +43,20 @@ class EOTModule(abstract.AbstractModule):
         EOTModule.should_send_silence = True
 
     def remove_silence_detection_event(self):
+        print(time.time())
         list(map(self.scheduler.cancel, self.scheduler.queue))
+        print(sched.scheduler)
 
     def send_silence_detected(self):
         self.eot = True
         output_iu = self.create_iu()
         output_iu.eot = True
         print("send eot")
+        print(time.time())
         self.append(output_iu)
 
     def send_silence_detected_after_delay(self):
+        pass
         while True:
             if EOTModule.should_send_silence:
                 self.scheduler.enter(self.eot_silence_threshold, 1, self.send_silence_detected)
