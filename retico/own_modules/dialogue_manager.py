@@ -60,6 +60,9 @@ class DM(abstract.AbstractModule):
         if self.intent == "yes":
             self._create_iu("cool, bis dann.")
             return 
+        if self.intent == "no":
+            self._error_handler()
+            return
         if self.intent == 'transmit':
             self._transmit_handler()
 

@@ -93,7 +93,6 @@ class GoogleASRModule(abstract.AbstractModule):
             # data, and stop iteration if the chunk is None, indicating the
             # end of the audio stream.
             chunk = self.audio_buffer.get()
-            print(chunk)
             if chunk is None:
                 return
             data = [chunk]

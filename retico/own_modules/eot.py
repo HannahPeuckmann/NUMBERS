@@ -1,10 +1,12 @@
 # silence detection
 import threading
+import logging
 import sched, time
 from retico.core import abstract
-from retico.core.audio.common import AudioIU
 from retico.core.text.common import SpeechRecognitionIU
 from retico.core.dialogue.common import DialogueActIU
+
+logging.basicConfig(filename='numbers.log', level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 class EOTModule(abstract.AbstractModule):
 
@@ -30,7 +32,7 @@ class EOTModule(abstract.AbstractModule):
     def output_iu():
         return DialogueActIU
 
-    def __init__(self, eot_threshold=10, **kwargs):
+    def __init__(self, eot_threshold=4, **kwargs):
         super().__init__(**kwargs)
         self.eot = False
         self.scheduler = sched.scheduler(time.time, time.sleep)
@@ -43,17 +45,14 @@ class EOTModule(abstract.AbstractModule):
         EOTModule.should_send_silence = True
 
     def remove_silence_detection_event(self):
-        print(time.time())
         list(map(self.scheduler.cancel, self.scheduler.queue))
-        print(sched.scheduler)
 
     def send_silence_detected(self):
         self.eot = True
         output_iu = self.create_iu()
         output_iu.eot = True
-        print("send eot")
-        print(time.time())
         self.append(output_iu)
+        logging.debug("eot send")
 
     def send_silence_detected_after_delay(self):
         pass
