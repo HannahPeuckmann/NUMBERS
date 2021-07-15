@@ -19,7 +19,7 @@ class MOTModule(abstract.AbstractModule):
     @staticmethod
     def description():
         return (
-            """A module that sends an end of turn signal trough the modules
+            """A module that sends an mid of turn signal trough the modules
             if it is not receiving any ius from the asr for a set timeframe."""
         )
 
@@ -31,7 +31,7 @@ class MOTModule(abstract.AbstractModule):
     def output_iu():
         return DialogueActIU
 
-    def __init__(self, mot_threshold=0.3, **kwargs):
+    def __init__(self, mot_threshold=0.2, **kwargs):
         super().__init__(**kwargs)
         self.mot = False
         self.scheduler = sched.scheduler(time.time, time.sleep)

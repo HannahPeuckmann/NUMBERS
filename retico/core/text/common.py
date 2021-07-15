@@ -57,7 +57,6 @@ class SpeechRecognitionIU(TextIU):
         self.payload = payload
         self.text = None
         self.final = False
-        # added by me
         self.pitch_class = None
         self.eot = False
         self.mot = False
