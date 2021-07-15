@@ -1,7 +1,6 @@
-data_tts/
+data_tts/*
 numbers.log
-TO_DO.txt
-google-cloud-sdk/
+google-cloud-sdk-333.0.0-linux-x86_64/*
 retico/__pycache__/
 retico/core/__pycache__/
 retico/core/audio/__pycache__/
@@ -14,5 +13,4 @@ retico/own_modules/__pycache__/
 retico/modules/google/__pycache__/
 .vscode/
 gAPI.json
-export.sh
 env/*

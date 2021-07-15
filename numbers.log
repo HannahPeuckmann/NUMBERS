@@ -1,47 +1,5 @@
-2021-04-11 19:44:55,315 Checking gAPI.json for explicit credentials as part of auth process...
-2021-04-11 19:45:06,210 Making request: POST https://oauth2.googleapis.com/token
-2021-04-11 19:45:06,423 Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2021-04-11 19:45:06,586 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
-2021-04-11 19:45:07,216 backchennel
-2021-04-11 19:45:12,633 asr iu
-2021-04-11 19:45:12,848 mot send
-2021-04-11 19:45:12,885 backchennel
-2021-04-11 19:45:15,891 asr iu
-2021-04-11 19:45:16,102 mot send
-2021-04-11 19:45:16,212 backchennel
-2021-04-11 19:47:44,987 Checking gAPI.json for explicit credentials as part of auth process...
-2021-04-11 19:47:54,300 Making request: POST https://oauth2.googleapis.com/token
-2021-04-11 19:47:54,441 Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2021-04-11 19:47:54,707 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
-2021-04-11 19:47:55,465 backchennel
-2021-04-11 19:48:01,750 asr iu
-2021-04-11 19:48:01,966 mot send
-2021-04-11 19:48:05,772 eot send
-2021-04-11 19:48:05,915 backchennel
-2021-04-11 19:48:19,227 asr iu
-2021-04-11 19:48:19,433 mot send
-2021-04-11 19:48:19,877 backchennel
-2021-04-11 19:48:23,235 eot send
-2021-04-11 19:48:25,194 asr iu
-2021-04-11 19:48:25,423 mot send
-2021-04-11 19:48:29,228 eot send
-2021-04-11 19:48:43,682 Checking gAPI.json for explicit credentials as part of auth process...
-2021-04-11 19:48:56,435 Making request: POST https://oauth2.googleapis.com/token
-2021-04-11 19:48:56,585 Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2021-04-11 19:48:56,766 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
-2021-04-11 19:48:57,690 backchennel
-2021-04-11 19:49:02,613 asr iu
-2021-04-11 19:49:02,835 mot send
-2021-04-11 19:49:02,875 backchennel
-2021-04-11 19:49:06,299 asr iu
-2021-04-11 19:49:06,505 mot send
-2021-04-11 19:49:06,570 backchennel
-2021-04-11 19:49:09,457 asr iu
-2021-04-11 19:49:09,678 mot send
-2021-04-11 19:49:09,738 backchennel
-2021-04-11 19:49:13,480 eot send
-2021-04-11 19:49:14,721 backchennel
-2021-04-11 19:49:22,855 asr iu
-2021-04-11 19:49:22,872 backchennel
-2021-04-11 19:49:23,062 mot send
-2021-04-11 19:49:26,871 eot send
+2021-07-15 15:18:57,278 Checking gAPI.json for explicit credentials as part of auth process...
+2021-07-15 15:19:12,043 Making request: POST https://oauth2.googleapis.com/token
+2021-07-15 15:19:12,269 Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-07-15 15:19:12,453 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-07-15 15:19:16,760 backchennel

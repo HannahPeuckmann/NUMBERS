@@ -35,7 +35,6 @@ class NLUModule(abstract.AbstractModule):
             txt += iu
         return txt
 
-    ## pattern matcher nach aho und corasic als transduktor maybe?
     def _parse(self, text):
         intents_values = [("transmit","\d+"),\
                           ("yes","ja|richtig|das ist richtig|genau|ja, richtig"),\

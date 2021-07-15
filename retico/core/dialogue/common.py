@@ -36,7 +36,6 @@ class DialogueActIU(abstract.IncrementalUnit):
         if concepts:
             self.concepts = concepts
         self.confidence = 0.0
-        # added by me
         self.asr_confidence = None
         self.eot = False
         self.mot = False

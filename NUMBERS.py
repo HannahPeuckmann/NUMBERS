@@ -1,7 +1,7 @@
-# NUMBERS, incremental numbers dictating dialogue system.
+# NUMBERS, incremental dialogue system in the number dictation domain.
 
-# reimplementation of the NUMBERS system by Schlangen and Skantze(200..)
-# by making use of the existing Framework ReTiCo by Baumann and ....
+# reimplementation of the NUMBERS system by Schlangen and Skantze
+# by making use of the existing framework ReTiCo by Baumann and Michael
 # for building incemental dilogue systems
 
 from retico.own_modules.eot import EOTModule
@@ -53,8 +53,8 @@ input()
 print("exiting")
 
 mic.stop()
-mot.stop()
 asr.stop()
+mot.stop()
 eot.stop()
 nlu.stop()
 dm.stop()
