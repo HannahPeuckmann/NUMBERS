@@ -4,7 +4,7 @@ Source code of my bachelor's thesis "Implementation of an incremental dialogue s
 
 # INSTALATION
 
-For help with the set up and instalation go see https://github.com/Uhlo/retico
+For help with the set up and installation go see https://github.com/Uhlo/retico
 
   - no need for rasa nlu
   - an API key for the google services is needed
