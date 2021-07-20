@@ -11,6 +11,6 @@ retico/modules/google/__pycache__/
 retico/modules/rasa/__pycache__/
 retico/own_modules/__pycache__/
 retico/modules/google/__pycache__/
-.vscode/
 gAPI.json
 env/*
+.gitignore

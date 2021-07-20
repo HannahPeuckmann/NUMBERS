@@ -1,5 +1,0 @@
-2021-07-15 15:18:57,278 Checking gAPI.json for explicit credentials as part of auth process...
-2021-07-15 15:19:12,043 Making request: POST https://oauth2.googleapis.com/token
-2021-07-15 15:19:12,269 Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2021-07-15 15:19:12,453 https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
-2021-07-15 15:19:16,760 backchennel
