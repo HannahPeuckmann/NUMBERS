@@ -1,6 +1,5 @@
 data_tts/
 numbers.log
-TO_DO.txt
 google-cloud-sdk/
 retico/__pycache__/
 retico/core/__pycache__/
@@ -12,7 +11,6 @@ retico/modules/google/__pycache__/
 retico/modules/rasa/__pycache__/
 retico/own_modules/__pycache__/
 retico/modules/google/__pycache__/
-.vscode/
 gAPI.json
-export.sh
 env/*
+.gitignore
