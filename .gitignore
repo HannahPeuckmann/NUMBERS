@@ -12,4 +12,3 @@ retico/own_modules/__pycache__/
 retico/modules/google/__pycache__/
 gAPI.json
 env/*
-.gitignore
